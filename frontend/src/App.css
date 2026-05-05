@@ -1101,20 +1101,32 @@ body {
   }
 
   .nav-content {
-    padding: 0 16px;
+    padding: 0 12px;
+  }
+
+  .logo {
+    font-size: 18px;
+    flex-shrink: 0;
   }
 
   .nav-links {
-    gap: 12px;
+    gap: 8px;
   }
 
   .nav-item {
     font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .divider {
+    margin: 0 2px;
   }
 
   .login-btn {
-    padding: 6px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .container {
