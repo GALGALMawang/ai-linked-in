@@ -5,17 +5,14 @@ interface Project {
   id: string;
   title: string;
   company: string;
+  logo: string;
   description: string;
   requirements: string[];
   duration: string;
-  reward: string;
+  fee: string;
+  capacity: number;
+  currentApplicants: number;
   category: string;
-}
-
-interface Evaluation {
-  score: number;
-  feedback: string;
-  educationalNote: string;
 }
 
 const getMentorInfo = (company: string, category: string) => {
@@ -235,7 +232,7 @@ function App() {
                 
                 <div className="list-layout">
                   {projects.map((project) => (
-                    <div key={project.id} className="list-item" onClick={() => setSelectedProject(project)}>
+                    <div key={project.id} className="list-item" onClick={() => handleProjectSelect(project)}>
                       <div className="item-company">
                         <div className="company-logo-box">
                           <img 
