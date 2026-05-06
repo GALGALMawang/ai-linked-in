@@ -323,6 +323,11 @@ body {
     gap: 24px;
   }
   
+  .detail-main-content, .detail-left-sidebar, .detail-right-workspace {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .detail-main-content {
     order: 1;
     min-height: auto;
