@@ -265,30 +265,88 @@ body {
   color: var(--white);
 }
 
-/* Detail View */
-.detail-container {
-  display: flex;
-  gap: 40px;
+/* Detail View Refactoring (3-Column Layout) */
+.detail-view-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.detail-layout-wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr 380px;
+  gap: 32px;
   align-items: flex-start;
   margin-top: 40px;
 }
 
-.detail-main {
-  flex: 1;
-  background: var(--white);
-  border: 1px solid var(--border-color);
-  padding: 48px;
-}
-
-.detail-sidebar {
-  width: 360px;
+.detail-left-sidebar {
   position: sticky;
   top: 104px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: calc(100vh - 140px);
 }
+
+.detail-main-content {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  min-height: 800px;
+}
+
+.detail-right-workspace {
+  position: sticky;
+  top: 104px;
+  height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-widget {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Override existing detail classes */
+.detail-container { display: none; } /* Hide old 2-column container if any */
+
+@media screen and (max-width: 1200px) {
+  .detail-layout-wrapper {
+    grid-template-columns: 240px 1fr;
+  }
+  .detail-right-workspace {
+    grid-column: span 2;
+    position: static;
+    height: 600px;
+    margin-top: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .detail-view-container {
+    padding: 0 16px;
+  }
+  .detail-layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .detail-left-sidebar, .detail-main-content, .detail-right-workspace {
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+  .detail-right-workspace {
+    height: 500px;
+  }
+}
+
 
 .back-btn {
   background: none;

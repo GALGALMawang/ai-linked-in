@@ -269,135 +269,143 @@ function App() {
           </>
         ) : (
           <section className="project-detail-view fade-in">
-            <div className="container detail-container">
-              <div className="detail-main">
-                <button className="back-btn" onClick={() => setSelectedProject(null)}>
-                  ← 목록으로 돌아가기
-                </button>
+            <div className="detail-view-container">
+              <div className="detail-layout-wrapper">
                 
-                <div className="detail-header-block">
-                  <p className="detail-company">{selectedProject.company}</p>
-                  <h2 className="detail-title">{selectedProject.title}</h2>
-                </div>
-
-                <div className="content-section ai-briefing">
-                  <h3 style={{ borderBottom: 'none', paddingBottom: 0 }}>실무 과제 브리핑 및 온보딩 플랜</h3>
-                  <p style={{ marginTop: '12px' }}><strong>업무 분석:</strong> 본 프로젝트는 {selectedProject.company}의 {selectedProject.category} 실무를 직접 경험하는 과정입니다. {selectedProject.description}</p>
-                  <p><strong>권장 역할 배분:</strong> 자료 조사 40%, 데이터 요약 30%, 기획안 작성 30%의 비중으로 업무가 진행됩니다.</p>
-                </div>
-
-                <div className="content-section schedule-section">
-                  <h3>인턴십 마일스톤 및 교육 커리큘럼</h3>
-                  <div className="timeline">
-                    <div className="timeline-item active">
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <strong>[Step 1] 사전 교육 및 팀 롤(Role) 배분 (D-3)</strong>
-                        <span>사수 멘토가 배정하는 필수 기초 지식(해당 산업 동향, 툴 활용법)을 학습하고 팀원들과 역할을 나눕니다.</span>
-                      </div>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <strong>[Step 2] 현업 담당자 킥오프 미팅 (D-Day)</strong>
-                        <span>{selectedProject.company} 실무 담당자와 화상 미팅을 통해 구체적인 과제 목표와 기대 수준(R&R)을 조율합니다.</span>
-                      </div>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <strong>[Step 3] 과제 수행 및 무제한 피드백 (진행 중)</strong>
-                        <span>우측 실무 멘토 채팅창을 통해 궁금한 점을 질문하고, 작성한 초안의 피드백을 실시간으로 받습니다.</span>
-                      </div>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <strong>[Step 4] 실무진 오피스 아워 (중간 점검)</strong>
-                        <span>현업 담당자와의 중간 점검 미팅을 통해 실무 관점의 날카로운 피드백을 수령하고 방향성을 수정합니다.</span>
-                      </div>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <strong>[Step 5] 최종 보고 및 수료</strong>
-                        <span>최종 결과물을 산출하고 평가받습니다. 인증된 포트폴리오 데이터는 향후 채용 연계 시 검증 자료로 활용됩니다.</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <aside className="detail-sidebar">
-                <div className="sidebar-card" style={{ marginBottom: '24px' }}>
-                  <h3>담당 사수 정보</h3>
-                  <div className="mentor-profile" style={{ marginTop: '16px', marginBottom: '24px', padding: '16px', background: '#F8F9FA', borderRadius: '8px', border: '1px solid #E5E5E5' }}>
-                    <strong style={{ display: 'block', fontSize: '16px', color: '#111111', marginBottom: '4px' }}>{getMentorInfo(selectedProject.company, selectedProject.category).name} 멘토</strong>
-                    <span style={{ fontSize: '14px', color: '#666666' }}>{selectedProject.company} {getMentorInfo(selectedProject.company, selectedProject.category).title}</span>
-                  </div>
-
-                  <h3>실무 진행 정보</h3>
-                  <div className="info-row">
-                    <span className="info-label">직무 카테고리</span>
-                    <span className="info-value">{selectedProject.category}</span>
-                  </div>
-                  <div className="info-row">
-                    <span className="info-label">소요 기간</span>
-                    <span className="info-value">{selectedProject.duration}</span>
-                  </div>
-                  <div className="info-row">
-                    <span className="info-label">팀 구성 현황</span>
-                    <span className="info-value">{selectedProject.currentApplicants} / {selectedProject.capacity} 명</span>
-                  </div>
-                  <div className="info-row">
-                    <span className="info-label">월 구독(교육비)</span>
-                    <span className="info-value highlight">{selectedProject.fee}</span>
-                  </div>
-                  <button className={`primary-btn mt-4 ${isSubscribed ? 'subscribed' : ''}`} style={{marginTop: '20px'}} onClick={() => { if(!isSubscribed) setIsPaymentModalOpen(true); }}>
-                    {isSubscribed ? '구독 중 (진행 가능)' : '구독하고 인턴십 시작하기'}
+                {/* Left Sidebar: Info & Progress */}
+                <aside className="detail-left-sidebar">
+                  <button className="back-btn" onClick={() => setSelectedProject(null)} style={{textAlign: 'left'}}>
+                    ← 목록으로 돌아가기
                   </button>
-                </div>
 
-                <div className="chat-widget">
-                  <div className="chat-header">
-                    <h4>팀 워크스페이스</h4>
-                    <span className="online-badge">온라인</span>
+                  <div className="sidebar-card">
+                    <h3>담당 사수 정보</h3>
+                    <div className="mentor-profile" style={{ marginTop: '16px', marginBottom: '24px', padding: '16px', background: '#F8F9FA', borderRadius: '8px', border: '1px solid #E5E5E5' }}>
+                      <strong style={{ display: 'block', fontSize: '16px', color: '#111111', marginBottom: '4px' }}>{getMentorInfo(selectedProject.company, selectedProject.category).name} 멘토</strong>
+                      <span style={{ fontSize: '14px', color: '#666666' }}>{selectedProject.company} {getMentorInfo(selectedProject.company, selectedProject.category).title}</span>
+                    </div>
+
+                    <h3>실무 진행 정보</h3>
+                    <div className="info-row">
+                      <span className="info-label">직무 카테고리</span>
+                      <span className="info-value">{selectedProject.category}</span>
+                    </div>
+                    <div className="info-row">
+                      <span className="info-label">소요 기간</span>
+                      <span className="info-value">{selectedProject.duration}</span>
+                    </div>
+                    <div className="info-row">
+                      <span className="info-label">팀 구성 현황</span>
+                      <span className="info-value">{selectedProject.currentApplicants} / {selectedProject.capacity} 명</span>
+                    </div>
+                    <div className="info-row">
+                      <span className="info-label">월 구독(교육비)</span>
+                      <span className="info-value highlight">{selectedProject.fee}</span>
+                    </div>
+                    <button className={`primary-btn mt-4 ${isSubscribed ? 'subscribed' : ''}`} style={{marginTop: '20px'}} onClick={() => { if(!isSubscribed) setIsPaymentModalOpen(true); }}>
+                      {isSubscribed ? '구독 중 (진행 가능)' : '구독하고 인턴십 시작하기'}
+                    </button>
                   </div>
-                  <div className="chat-messages">
-                    {chatMessages.map((msg, index) => (
-                      <div key={index} className={`chat-bubble-wrapper ${msg.role}`}>
-                        {msg.role === 'mentor' && (
-                          <div className="chat-avatar" style={{background: '#3366FF', color: 'white'}}>{msg.mentorInfo?.name.substring(1) || '사수'}</div>
-                        )}
-                        {msg.role === 'ai' && (
-                          <div className="chat-avatar">AI</div>
-                        )}
-                        <div className={`chat-bubble ${msg.role}`}>
-                          {msg.role === 'mentor' && <div style={{fontSize: '12px', fontWeight: 'bold', marginBottom: '4px'}}>{msg.mentorInfo?.name} 멘토</div>}
-                          {msg.role === 'ai' && <div style={{fontSize: '12px', fontWeight: 'bold', marginBottom: '4px'}}>AI 어시스턴트</div>}
-                          {msg.content}
+                </aside>
+
+                {/* Center: Main Content */}
+                <main className="detail-main-content">
+                  <div className="detail-header-block">
+                    <p className="detail-company">{selectedProject.company}</p>
+                    <h2 className="detail-title">{selectedProject.title}</h2>
+                  </div>
+
+                  <div className="content-section ai-briefing">
+                    <h3 style={{ borderBottom: 'none', paddingBottom: 0 }}>실무 과제 브리핑 및 온보딩 플랜</h3>
+                    <p style={{ marginTop: '12px' }}><strong>업무 분석:</strong> 본 프로젝트는 {selectedProject.company}의 {selectedProject.category} 실무를 직접 경험하는 과정입니다. {selectedProject.description}</p>
+                    <p><strong>권장 역할 배분:</strong> 자료 조사 40%, 데이터 요약 30%, 기획안 작성 30%의 비중으로 업무가 진행됩니다.</p>
+                  </div>
+
+                  <div className="content-section schedule-section">
+                    <h3>인턴십 마일스톤 및 교육 커리큘럼</h3>
+                    <div className="timeline">
+                      <div className="timeline-item active">
+                        <div className="timeline-marker"></div>
+                        <div className="timeline-content">
+                          <strong>[Step 1] 사전 교육 및 팀 롤(Role) 배분 (D-3)</strong>
+                          <span>사수 멘토가 배정하는 필수 기초 지식(해당 산업 동향, 툴 활용법)을 학습하고 팀원들과 역할을 나눕니다.</span>
                         </div>
                       </div>
-                    ))}
-                    {isChatLoading && (
-                      <div className="chat-bubble-wrapper ai">
-                        <div className="chat-avatar">AI</div>
-                        <div className="chat-bubble ai typing">입력 중...</div>
+                      <div className="timeline-item">
+                        <div className="timeline-marker"></div>
+                        <div className="timeline-content">
+                          <strong>[Step 2] 현업 담당자 킥오프 미팅 (D-Day)</strong>
+                          <span>{selectedProject.company} 실무 담당자와 화상 미팅을 통해 구체적인 과제 목표와 기대 수준(R&R)을 조율합니다.</span>
+                        </div>
                       </div>
-                    )}
+                      <div className="timeline-item">
+                        <div className="timeline-marker"></div>
+                        <div className="timeline-content">
+                          <strong>[Step 3] 과제 수행 및 무제한 피드백 (진행 중)</strong>
+                          <span>우측 실무 멘토 채팅창을 통해 궁금한 점을 질문하고, 작성한 초안의 피드백을 실시간으로 받습니다.</span>
+                        </div>
+                      </div>
+                      <div className="timeline-item">
+                        <div className="timeline-marker"></div>
+                        <div className="timeline-content">
+                          <strong>[Step 4] 실무진 오피스 아워 (중간 점검)</strong>
+                          <span>현업 담당자와의 중간 점검 미팅을 통해 실무 관점의 날카로운 피드백을 수령하고 방향성을 수정합니다.</span>
+                        </div>
+                      </div>
+                      <div className="timeline-item">
+                        <div className="timeline-marker"></div>
+                        <div className="timeline-content">
+                          <strong>[Step 5] 최종 보고 및 수료</strong>
+                          <span>최종 결과물을 산출하고 평가받습니다. 인증된 포트폴리오 데이터는 향후 채용 연계 시 검증 자료로 활용됩니다.</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <form className="chat-input-form" onSubmit={handleChatSubmit}>
-                    <input
-                      type="text"
-                      placeholder={isSubscribed ? "질문이나 초안 링크를 남겨주세요." : "구독 후 멘토링을 시작해보세요."}
-                      value={chatInput}
-                      onChange={(e) => setChatInput(e.target.value)}
-                      disabled={isChatLoading || !isSubscribed}
-                    />
-                    <button type="submit" disabled={isChatLoading || chatInput.trim() === '' || !isSubscribed}>전송</button>
-                  </form>
-                </div>
-              </aside>
+                </main>
+
+                {/* Right: Workspace Chat */}
+                <aside className="detail-right-workspace">
+                  <div className="chat-widget">
+                    <div className="chat-header">
+                      <h4>팀 워크스페이스</h4>
+                      <span className="online-badge">온라인</span>
+                    </div>
+                    <div className="chat-messages">
+                      {chatMessages.map((msg, index) => (
+                        <div key={index} className={`chat-bubble-wrapper ${msg.role}`}>
+                          {msg.role === 'mentor' && (
+                            <div className="chat-avatar" style={{background: '#3366FF', color: 'white'}}>{msg.mentorInfo?.name.substring(1) || '사수'}</div>
+                          )}
+                          {msg.role === 'ai' && (
+                            <div className="chat-avatar">AI</div>
+                          )}
+                          <div className={`chat-bubble ${msg.role}`}>
+                            {msg.role === 'mentor' && <div style={{fontSize: '12px', fontWeight: 'bold', marginBottom: '4px'}}>{msg.mentorInfo?.name} 멘토</div>}
+                            {msg.role === 'ai' && <div style={{fontSize: '12px', fontWeight: 'bold', marginBottom: '4px'}}>AI 어시스턴트</div>}
+                            {msg.content}
+                          </div>
+                        </div>
+                      ))}
+                      {isChatLoading && (
+                        <div className="chat-bubble-wrapper ai">
+                          <div className="chat-avatar">AI</div>
+                          <div className="chat-bubble ai typing">입력 중...</div>
+                        </div>
+                      )}
+                    </div>
+                    <form className="chat-input-form" onSubmit={handleChatSubmit}>
+                      <input
+                        type="text"
+                        placeholder={isSubscribed ? "질문이나 초안 링크를 남겨주세요." : "구독 후 멘토링을 시작해보세요."}
+                        value={chatInput}
+                        onChange={(e) => setChatInput(e.target.value)}
+                        disabled={isChatLoading || !isSubscribed}
+                      />
+                      <button type="submit" disabled={isChatLoading || chatInput.trim() === '' || !isSubscribed}>전송</button>
+                    </form>
+                  </div>
+                </aside>
+              </div>
             </div>
           </section>
         )}
