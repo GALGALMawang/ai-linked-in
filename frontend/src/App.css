@@ -318,13 +318,25 @@ body {
 
 @media screen and (max-width: 1200px) {
   .detail-layout-wrapper {
-    grid-template-columns: 240px 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
-  .detail-right-workspace {
-    grid-column: span 2;
+  
+  .detail-main-content {
+    order: 1;
+    min-height: auto;
+  }
+  
+  .detail-left-sidebar {
+    order: 2;
     position: static;
-    height: 600px;
-    margin-top: 32px;
+  }
+  
+  .detail-right-workspace {
+    order: 3;
+    position: static;
+    height: 500px;
   }
 }
 
@@ -332,18 +344,9 @@ body {
   .detail-view-container {
     padding: 0 16px;
   }
-  .detail-layout-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .detail-left-sidebar, .detail-main-content, .detail-right-workspace {
-    width: 100%;
-    position: static;
-    height: auto;
-  }
-  .detail-right-workspace {
-    height: 500px;
+  
+  .detail-main-content {
+    padding: 24px;
   }
 }
 
