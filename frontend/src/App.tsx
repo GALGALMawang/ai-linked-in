@@ -393,16 +393,19 @@ function App() {
                         </div>
                       )}
                     </div>
-                    <form className="chat-input-form" onSubmit={handleChatSubmit}>
-                      <input
-                        type="text"
-                        placeholder={isSubscribed ? "질문이나 초안 링크를 남겨주세요." : "구독 후 멘토링을 시작해보세요."}
-                        value={chatInput}
-                        onChange={(e) => setChatInput(e.target.value)}
-                        disabled={isChatLoading || !isSubscribed}
-                      />
-                      <button type="submit" disabled={isChatLoading || chatInput.trim() === '' || !isSubscribed}>전송</button>
-                    </form>
+                    <div className="chat-input-container" onClick={() => { if (!isSubscribed) setIsPaymentModalOpen(true); }}>
+                      <form className="chat-input-form" onSubmit={handleChatSubmit} style={{ pointerEvents: isSubscribed ? 'auto' : 'none' }}>
+                        <input
+                          type="text"
+                          placeholder={isSubscribed ? "질문이나 초안 링크를 남겨주세요." : "구독 후 멘토링을 시작해보세요."}
+                          value={chatInput}
+                          onChange={(e) => setChatInput(e.target.value)}
+                          disabled={isChatLoading}
+                          readOnly={!isSubscribed}
+                        />
+                        <button type="submit" disabled={isChatLoading || chatInput.trim() === '' || !isSubscribed}>전송</button>
+                      </form>
+                    </div>
                   </div>
                 </aside>
               </div>
