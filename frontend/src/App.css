@@ -534,7 +534,8 @@ body {
 .chat-widget {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
+  min-height: 0;
   background: var(--white);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
