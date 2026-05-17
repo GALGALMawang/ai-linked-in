@@ -67,12 +67,34 @@ body {
   flex-shrink: 0;
 }
 
-.logo-accent {
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+}
+
+.logo-kr {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.logo-kr-accent {
   color: #6366F1;
-  font-style: italic;
-  font-size: 0.72em;
-  letter-spacing: -0.5px;
-  vertical-align: baseline;
+}
+
+.logo-en {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.logo-en-accent {
+  color: #6366F1;
 }
 
 .nav-links {
