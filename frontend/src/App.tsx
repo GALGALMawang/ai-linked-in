@@ -118,8 +118,8 @@ function App() {
           <div className="logo" onClick={() => handleNavClick('explore')}>
             <span className="logo-cursor" />
             <div className="logo-text">
-              <div className="logo-kr">첫<span className="logo-kr-accent">줄</span></div>
-              <div className="logo-en">First<span className="logo-en-accent">Line</span></div>
+              <div className="logo-kr">첫, <span className="logo-kr-accent">줄</span></div>
+              <div className="logo-en">First, <span className="logo-en-accent">Line</span></div>
             </div>
           </div>
           <div className="nav-links">
