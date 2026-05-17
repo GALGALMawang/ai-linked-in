@@ -117,7 +117,7 @@ function App() {
         <div className="nav-content">
           <div className="logo" onClick={() => handleNavClick('explore')}>
             <span className="logo-cursor" />
-            첫<span className="logo-accent">줄</span>
+            첫<span className="logo-accent">Line</span>
           </div>
           <div className="nav-links">
             <span className={`nav-item ${currentView === 'explore' ? 'active' : ''}`} onClick={() => handleNavClick('explore')}>실무 인턴십 탐색</span>
