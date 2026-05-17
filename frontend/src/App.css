@@ -47,11 +47,28 @@ body {
 }
 
 .logo {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--black);
-  letter-spacing: -0.5px;
+  font-size: 21px;
+  font-weight: 900;
+  color: #111;
+  letter-spacing: -1px;
   cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 19px;
+  background: linear-gradient(180deg, #6366F1 0%, #818CF8 100%);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.logo-accent {
+  color: #6366F1;
 }
 
 .nav-links {
@@ -1177,8 +1194,14 @@ body {
   }
 
   .logo {
-    font-size: 18px;
+    font-size: 19px;
     flex-shrink: 0;
+    gap: 7px;
+  }
+
+  .logo-cursor {
+    width: 3px;
+    height: 17px;
   }
 
   .nav-links {

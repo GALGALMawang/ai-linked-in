@@ -115,7 +115,10 @@ function App() {
     <div className="app-wrapper">
       <nav className="navbar">
         <div className="nav-content">
-          <div className="logo" onClick={() => handleNavClick('explore')}>첫줄</div>
+          <div className="logo" onClick={() => handleNavClick('explore')}>
+            <span className="logo-cursor" />
+            첫<span className="logo-accent">줄</span>
+          </div>
           <div className="nav-links">
             <span className={`nav-item ${currentView === 'explore' ? 'active' : ''}`} onClick={() => handleNavClick('explore')}>실무 인턴십 탐색</span>
             <span className={`nav-item ${currentView === 'portfolio' ? 'active' : ''}`} onClick={() => handleNavClick('portfolio')}>포트폴리오</span>
