@@ -115,7 +115,7 @@ function App() {
     <div className="app-wrapper">
       <nav className="navbar">
         <div className="nav-content">
-          <div className="logo" onClick={() => handleNavClick('explore')}>AI Linked</div>
+          <div className="logo" onClick={() => handleNavClick('explore')}>첫줄</div>
           <div className="nav-links">
             <span className={`nav-item ${currentView === 'explore' ? 'active' : ''}`} onClick={() => handleNavClick('explore')}>실무 인턴십 탐색</span>
             <span className={`nav-item ${currentView === 'portfolio' ? 'active' : ''}`} onClick={() => handleNavClick('portfolio')}>포트폴리오</span>
@@ -420,7 +420,7 @@ function App() {
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setIsLoginModalOpen(false)}>✕</button>
             <h2 className="modal-title">로그인 및 회원가입</h2>
-            <p className="modal-desc">AI Linked에 오신 것을 환영합니다.</p>
+            <p className="modal-desc">첫줄에 오신 것을 환영합니다.</p>
             <div className="mock-input-group">
               <input type="email" className="modal-input" placeholder="이메일 주소" />
               <input type="password" className="modal-input" placeholder="비밀번호" />
